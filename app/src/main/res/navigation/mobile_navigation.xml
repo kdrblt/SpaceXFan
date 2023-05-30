@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_rockets">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.kadirbulut.spacexfan.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_rockets"
+        android:name="com.kadirbulut.spacexfan.ui.rockets.RocketsFragment"
+        android:label="@string/title_rockets"
+        tools:layout="@layout/fragment_rockets" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.kadirbulut.spacexfan.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_favourites"
+        android:name="com.kadirbulut.spacexfan.ui.favourites.FavouritesFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourites" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.kadirbulut.spacexfan.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_upcoming_launches"
+        android:name="com.kadirbulut.spacexfan.ui.upcominglaunches.UpcomingLaunchesFragment"
+        android:label="@string/title_upcoming_launches"
+        tools:layout="@layout/fragment_upcoming_launches" />
 </navigation>

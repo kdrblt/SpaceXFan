@@ -1,7 +1,8 @@
 package com.kadirbulut.spacexfan.domain.usecase.remote
 
 import com.kadirbulut.spacexfan.common.util.CallBack
-import com.kadirbulut.spacexfan.data.model.response.RocketResponseModel
+import com.kadirbulut.spacexfan.domain.dto.RocketModelDto
+import com.kadirbulut.spacexfan.domain.mapper.toDomainModel
 import com.kadirbulut.spacexfan.domain.repository.SpaceXRepository
 import java.io.IOException
 import javax.inject.Inject
@@ -13,10 +14,12 @@ class GetRocketWithIdUseCase @Inject constructor(
     data class Params(
         val rocketId: String // rocket id for specific rocket
     )
-    suspend operator fun invoke(parameters: Params): CallBack<RocketResponseModel> {
+    suspend operator fun invoke(parameters: Params): CallBack<RocketModelDto> {
         return try {
             CallBack.OnLoading
-            CallBack.OnSuccess(spaceXRepository.getRocketWithId(parameters.rocketId))
+            CallBack.OnSuccess(
+                spaceXRepository.getRocketWithId(parameters.rocketId).toDomainModel()
+            )
         } catch (e: HttpException) {
             CallBack.OnError(e)
         } catch (e: IOException) {

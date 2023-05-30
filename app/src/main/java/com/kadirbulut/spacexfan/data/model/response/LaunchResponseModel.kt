@@ -2,7 +2,7 @@ package com.kadirbulut.spacexfan.data.model.response
 
 import com.google.gson.annotations.SerializedName
 
-//launch response model
+// launch response model
 data class LaunchResponseModel(
 
     @SerializedName("fairings") var fairings: String?,

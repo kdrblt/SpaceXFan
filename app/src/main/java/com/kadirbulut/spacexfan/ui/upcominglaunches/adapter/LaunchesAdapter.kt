@@ -20,6 +20,9 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
                 it.cardViewLaunch.setBackgroundColor(
                     it.cardViewLaunch.resources.getColor(getBackgroundColor(position))
                 )
+                it.clItemLaunch.setOnClickListener {
+                    onLaunchClicked(launchModelDto.id.toString())
+                }
             }
         }
     }

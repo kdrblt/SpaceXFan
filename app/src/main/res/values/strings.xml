@@ -16,4 +16,9 @@
     <string name="feet">feet</string>
     <string name="kg">kg</string>
     <string name="formatted_value_text">%s %s</string>
+    <string name="launch_name_title">Name</string>
+    <string name="launch_date_title">Date</string>
+    <string name="launch_flight_number_title">Flight Number</string>
+    <string name="launch_detail_page_title">Launch Details</string>
+    <string name="rocket_detail_page_title">Rocket Details</string>
 </resources>

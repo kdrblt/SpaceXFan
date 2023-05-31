@@ -48,14 +48,19 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
                             rocketsAdapter.setList(it.data)
                             isLoading.postValue(false)
                             rocketsAdapter.onRocketClicked = {
-                                findNavController().navigate(
-                                    RocketsFragmentDirections.actionFromRocketsToRocketDetail(it)
-                                )
+                                navigateToDetail(it)
                             }
                         }
                     }
                 }
             )
         }
+    }
+    private fun navigateToDetail(id: String) {
+        findNavController().navigate(
+            RocketsFragmentDirections.actionFromRocketsToRocketDetail(
+                id
+            )
+        )
     }
 }

@@ -102,8 +102,4 @@ class RocketDetailViewModel @Inject constructor(
             )
         )
     }
-
-    companion object {
-        const val ROCKET_ID = "rocketId"
-    }
 }

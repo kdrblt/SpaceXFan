@@ -9,6 +9,7 @@ data class LaunchModelDto(
     val id: String?,
     val name: String?,
     val date_utc: String?,
+    var flightNumber: Int?,
     val links: Links?
 ) : Parcelable {
 

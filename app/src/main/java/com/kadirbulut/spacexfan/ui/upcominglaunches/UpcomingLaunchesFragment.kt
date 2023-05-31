@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kadirbulut.spacexfan.R
 import com.kadirbulut.spacexfan.common.util.CallBack
@@ -46,10 +47,21 @@ class UpcomingLaunchesFragment : BaseFragment<FragmentUpcomingLaunchesBinding>()
                                 LinearLayoutManager(requireContext())
                             launchesAdapter.setList(it.data)
                             isLoading.postValue(false)
+                            launchesAdapter.onLaunchClicked = {
+                                navigateToDetail(it)
+                            }
                         }
                     }
                 }
             )
         }
+    }
+
+    private fun navigateToDetail(id: String) {
+        findNavController().navigate(
+            UpcomingLaunchesFragmentDirections.actionFromLaunchesToLaunchDetail(
+                id
+            )
+        )
     }
 }

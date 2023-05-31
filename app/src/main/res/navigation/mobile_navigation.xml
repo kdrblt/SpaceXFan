@@ -25,7 +25,12 @@
         android:id="@+id/navigation_upcoming_launches"
         android:name="com.kadirbulut.spacexfan.ui.upcominglaunches.UpcomingLaunchesFragment"
         android:label="@string/title_upcoming_launches"
-        tools:layout="@layout/fragment_upcoming_launches" />
+        tools:layout="@layout/fragment_upcoming_launches" >
+        <action
+            android:id="@+id/action_from_launches_to_launchDetail"
+            app:destination="@id/navigation_launch_detail" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_rocket_detail"
@@ -34,5 +39,14 @@
             android:name="rocketId"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_launch_detail"
+        android:name="com.kadirbulut.spacexfan.ui.upcominglaunchesdetail.UpcomingLaunchesDetailFragment">
+        <argument
+            android:name="launchId"
+            app:argType="string" />
+    </fragment>
+
 
 </navigation>

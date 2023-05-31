@@ -7,6 +7,7 @@ fun LaunchResponseModel.toDomainModel() = LaunchModelDto(
     id = id,
     name = name,
     date_utc = dateUtc,
+    flightNumber = flightNumber,
     links = links?.toDomainModel()
 )
 

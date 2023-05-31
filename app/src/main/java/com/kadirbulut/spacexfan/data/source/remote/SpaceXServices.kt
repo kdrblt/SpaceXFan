@@ -26,6 +26,6 @@ interface SpaceXServices {
         private const val ROCKETS = "v4/rockets"
         private const val ROCKET = "v4/rockets/{id}"
         private const val LAUNCHES = "v5/launches"
-        private const val LAUNCH = "v5/launches/:id"
+        private const val LAUNCH = "v5/launches/{id}"
     }
 }

@@ -1,22 +1,81 @@
 package com.kadirbulut.spacexfan.ui.rockets
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kadirbulut.spacexfan.R
+import com.kadirbulut.spacexfan.common.util.CallBack
 import com.kadirbulut.spacexfan.databinding.FragmentRocketsBinding
 import com.kadirbulut.spacexfan.ui.base.BaseFragment
+import com.kadirbulut.spacexfan.ui.rockets.adapter.RocketsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
 
     private val viewModel by viewModels<RocketsViewModel>()
+    private val rocketsAdapter by lazy { RocketsAdapter() }
     override fun getLayoutRes(): Int = R.layout.fragment_rockets
 
-    override fun initViews() {
-        initAdapter()
-        binding.textHome.text = "kadir bulut rockets"
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        initObservers()
     }
 
-    private fun initAdapter() {
+    override fun initViews() {
+    }
+
+    private fun initObservers() {
+        /*with(binding) {
+            with(viewModel!!) {
+                rockets.observe(viewLifecycleOwner) {
+                    when (it) {
+                        is CallBack.OnError -> {
+                            isLoading.postValue(false)
+                            System.out.println(
+                                "8763475637486578346785634 err---> " + it.error.message
+                            )
+                        }
+                        CallBack.OnLoading -> {
+                            isLoading.postValue(true)
+                        }
+                        is CallBack.OnSuccess -> {
+                            isLoading.postValue(false)
+                            System.out.println("8763475637486578346785634 succ---> " + it.data.size)
+                        }
+                    }
+                }
+            }
+        }*/
+
+        with(viewModel) {
+            // top categories
+            rockets.observe(
+                viewLifecycleOwner,
+                Observer {
+                    when (it) {
+                        is CallBack.OnError -> {
+                            isLoading.postValue(false)
+                            System.out.println(
+                                "8763475637486578346785634 err---> " + it.error.message
+                            )
+                        }
+                        CallBack.OnLoading -> {
+                            isLoading.postValue(true)
+                        }
+                        is CallBack.OnSuccess -> {
+                            binding.rvRockets.adapter = rocketsAdapter
+                            binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
+                            rocketsAdapter.setList(it.data)
+                            System.out.println("8763475637486578346785634 succ---> " + it.data.size)
+                            isLoading.postValue(false)
+                        }
+                    }
+                }
+            )
+        }
     }
 }

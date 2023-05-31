@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Title1" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/text_size_28sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_extra_title1</item>
+        <item name="android:fontFeatureSettings">pnum</item>
+    </style>
+
+    <style name="Title1Medium" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_size_20sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_extra_title1</item>
+        <item name="android:fontFeatureSettings">pnum</item>
+    </style>
+
+
+    <style name="BodyMedium16" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_extra_body</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_body</item>
+        <item name="android:fontFeatureSettings">pnum</item>
+    </style>
+
+
+    <style name="BodyMedium13" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_size_13sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:lineSpacingExtra">@dimen/spacing_extra_body</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_body</item>
+        <item name="android:fontFeatureSettings">pnum</item>
+    </style>
+
+</resources>

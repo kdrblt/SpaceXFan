@@ -7,5 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class RocketModelDto(
     val id: String?,
-    val name: String?
+    val name: String?,
+    val flickrImages: List<String?> = listOf(),
+    val description: String?
 ) : Parcelable

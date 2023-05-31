@@ -5,12 +5,13 @@ import com.kadirbulut.spacexfan.data.source.remote.SpaceXServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-@InstallIn
 @Module
+@InstallIn(SingletonComponent::class)
 class SpaceXFanApiRetrofitModule {
     @Provides
     @Singleton

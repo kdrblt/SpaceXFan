@@ -29,7 +29,7 @@ data class RocketResponseModel(
 
 ) {
     data class Height(
-        @SerializedName("meters") var meters: Int?,
+        @SerializedName("meters") var meters: Double?,
         @SerializedName("feet") var feet: Double?
     )
 
@@ -38,7 +38,7 @@ data class RocketResponseModel(
         @SerializedName("thrust_vacuum") var thrustVacuum: ThrustVacuum?,
         @SerializedName("reusable") var reusable: Boolean?,
         @SerializedName("engines") var engines: Int?,
-        @SerializedName("fuel_amount_tons") var fuelAmountTons: Int?,
+        @SerializedName("fuel_amount_tons") var fuelAmountTons: Double?,
         @SerializedName("burn_time_sec") var burnTimeSec: Int?
     )
 
@@ -55,10 +55,10 @@ data class RocketResponseModel(
     data class SecondStage(
         @SerializedName("thrust") var thrust: Thrust?,
         @SerializedName("payloads") var payloads: Payloads?,
-        @SerializedName("reusable") var reusable: Boolean? = null,
-        @SerializedName("engines") var engines: Int? = null,
-        @SerializedName("fuel_amount_tons") var fuelAmountTons: Int? = null,
-        @SerializedName("burn_time_sec") var burnTimeSec: Int? = null
+        @SerializedName("reusable") var reusable: Boolean?,
+        @SerializedName("engines") var engines: Int?,
+        @SerializedName("fuel_amount_tons") var fuelAmountTons: Double?,
+        @SerializedName("burn_time_sec") var burnTimeSec: Int?
     )
 
     data class Payloads(
@@ -72,13 +72,13 @@ data class RocketResponseModel(
     )
 
     data class Thrust(
-        @SerializedName("kN") var kN: Int? = null,
-        @SerializedName("lbf") var lbf: Int? = null
+        @SerializedName("kN") var kN: Int?,
+        @SerializedName("lbf") var lbf: Int?
     )
 
     data class Diameter(
-        @SerializedName("meters") var meters: Double? = null,
-        @SerializedName("feet") var feet: Double? = null
+        @SerializedName("meters") var meters: Double?,
+        @SerializedName("feet") var feet: Double?
     )
 
     data class Engines(

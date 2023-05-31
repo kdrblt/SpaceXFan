@@ -18,8 +18,11 @@ class SpaceXRepositoryImpl @Inject constructor(
         spaceXRemoteDataSource.getRocketWithId(rocketId)
 
     // remote repository implementations for launches
-    override suspend fun getLaunches(): List<LaunchResponseModel> =
-        spaceXRemoteDataSource.getLaunches()
+    override suspend fun getLaunches(): List<LaunchResponseModel> {
+        return spaceXRemoteDataSource.getLaunches().filter {
+            it.upcoming == true
+        }
+    }
 
     override suspend fun getLaunchWithId(launchId: String): LaunchResponseModel =
         spaceXRemoteDataSource.getLaunchWithId(launchId)

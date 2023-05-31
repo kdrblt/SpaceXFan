@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 // launch response model
 data class LaunchResponseModel(
 
-    @SerializedName("fairings") var fairings: String?,
+    @SerializedName("fairings") var fairings: Fairings?,
     @SerializedName("links") var links: Links?,
     @SerializedName("static_fire_date_utc") var staticFireDateUtc: String?,
     @SerializedName("static_fire_date_unix") var staticFireDateUnix: Int?,
@@ -14,12 +14,12 @@ data class LaunchResponseModel(
     @SerializedName("window") var window: Int?,
     @SerializedName("rocket") var rocket: String?,
     @SerializedName("success") var success: Boolean?,
-    @SerializedName("failures") var failures: List<String>,
-    @SerializedName("details") var details: String? = null,
-    @SerializedName("crew") var crew: List<String>,
-    @SerializedName("ships") var ships: List<String>,
-    @SerializedName("capsules") var capsules: List<String>,
-    @SerializedName("payloads") var payloads: List<String>,
+    @SerializedName("failures") var failures: List<Failures?>?,
+    @SerializedName("details") var details: String?,
+    @SerializedName("crew") var crew: List<Crew?>?,
+    @SerializedName("ships") var ships: List<String?>?,
+    @SerializedName("capsules") var capsules: List<String?>?,
+    @SerializedName("payloads") var payloads: List<String?>?,
     @SerializedName("launchpad") var launchpad: String?,
     @SerializedName("auto_update") var autoUpdate: Boolean?,
     @SerializedName("flight_number") var flightNumber: Int?,
@@ -32,6 +32,21 @@ data class LaunchResponseModel(
     @SerializedName("cores") var cores: List<Cores>,
     @SerializedName("id") var id: String?
 ) {
+
+    data class Fairings(
+
+        @SerializedName("reused") var reused: Boolean?,
+        @SerializedName("recovery_attempt") var recoveryAttempt: Boolean?,
+        @SerializedName("recovered") var recovered: Boolean?,
+        @SerializedName("ships") var ships: List<String?>?
+
+    )
+
+    data class Crew(
+        @SerializedName("crew") var crew: String?,
+        @SerializedName("role") var role: String?
+    )
+
     data class Patch(
         @SerializedName("small") var small: String?,
         @SerializedName("large") var large: String?
@@ -70,5 +85,13 @@ data class LaunchResponseModel(
         @SerializedName("landing_success") var landingSuccess: Boolean? = null,
         @SerializedName("landing_type") var landingType: String? = null,
         @SerializedName("landpad") var landpad: String? = null
+    )
+
+    data class Failures(
+
+        @SerializedName("time") var time: Int?,
+        @SerializedName("altitude") var altitude: String?,
+        @SerializedName("reason") var reason: String?
+
     )
 }

@@ -1,24 +1,24 @@
-package com.kadirbulut.spacexfan.ui.rockets.adapter
+package com.kadirbulut.spacexfan.ui.upcominglaunches.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kadirbulut.spacexfan.R
-import com.kadirbulut.spacexfan.databinding.ItemRocketBinding
-import com.kadirbulut.spacexfan.domain.dto.RocketModelDto
+import com.kadirbulut.spacexfan.databinding.ItemUpcomingLaunchBinding
+import com.kadirbulut.spacexfan.domain.dto.LaunchModelDto
 
-class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
+class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
 
-    private var dataSet = arrayListOf<RocketModelDto>()
-    var onRocketClicked: (String) -> Unit = {}
+    private var dataSet = arrayListOf<LaunchModelDto>()
+    var onLaunchClicked: (String) -> Unit = {}
 
-    inner class ViewHolder(private var binding: ItemRocketBinding) :
+    inner class ViewHolder(private var binding: ItemUpcomingLaunchBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(rocketModelDto: RocketModelDto, position: Int) {
+        fun bind(launchModelDto: LaunchModelDto, position: Int) {
             binding.let {
-                it.rocket = rocketModelDto
-                it.clItemRocket.setBackgroundColor(
-                    it.clItemRocket.resources.getColor(getBackgroundColor(position))
+                it.launch = launchModelDto
+                it.cardViewLaunch.setBackgroundColor(
+                    it.cardViewLaunch.resources.getColor(getBackgroundColor(position))
                 )
             }
         }
@@ -27,7 +27,7 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
-            ItemRocketBinding.inflate(
+            ItemUpcomingLaunchBinding.inflate(
                 LayoutInflater.from(viewGroup.context),
                 viewGroup,
                 false
@@ -45,7 +45,7 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
     }
 
     // set dataset
-    fun setList(data: List<RocketModelDto>) {
+    fun setList(data: List<LaunchModelDto>) {
         dataSet.clear()
         dataSet.addAll(data)
         notifyItemRangeInserted(0, data.size)
@@ -53,11 +53,11 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
 
     private fun getBackgroundColor(index: Int): Int {
         val colors = arrayListOf(
-            R.color.orange,
-            R.color.light_orange,
-            R.color.yellow,
-            R.color.light_blue,
-            R.color.blue
+            R.color.bg_color_1,
+            R.color.bg_color_2,
+            R.color.bg_color_3,
+            R.color.bg_color_4,
+            R.color.bg_color_5
         )
         return colors[index % 5]
     }

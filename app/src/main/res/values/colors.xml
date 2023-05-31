@@ -19,4 +19,10 @@
     <color name="blue">#789fcc</color>
     <color name="orange_primary">#dd571c</color>
     <color name="brown">#4c3228</color>
+    <color name="bg_color_1">#a7bed3</color>
+    <color name="bg_color_2">#c6e2e9</color>
+    <color name="bg_color_3">#f1ffc4</color>
+    <color name="bg_color_4">#ffcaaf</color>
+    <color name="bg_color_5">#dab894</color>
+
 </resources>

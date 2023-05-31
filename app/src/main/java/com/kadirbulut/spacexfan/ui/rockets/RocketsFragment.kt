@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kadirbulut.spacexfan.R
 import com.kadirbulut.spacexfan.common.util.CallBack
@@ -29,7 +30,6 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
     }
 
     private fun initObservers() {
-
         with(viewModel) {
             // top categories
             rockets.observe(
@@ -47,6 +47,11 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
                             binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
                             rocketsAdapter.setList(it.data)
                             isLoading.postValue(false)
+                            rocketsAdapter.onRocketClicked = {
+                                findNavController().navigate(
+                                    RocketsFragmentDirections.actionFromRocketsToRocketDetail(it)
+                                )
+                            }
                         }
                     }
                 }

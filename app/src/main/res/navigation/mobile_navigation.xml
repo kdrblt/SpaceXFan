@@ -9,7 +9,11 @@
         android:id="@+id/navigation_rockets"
         android:name="com.kadirbulut.spacexfan.ui.rockets.RocketsFragment"
         android:label="@string/title_rockets"
-        tools:layout="@layout/fragment_rockets" />
+        tools:layout="@layout/fragment_rockets">
+        <action
+            android:id="@+id/action_from_rockets_to_rocketDetail"
+            app:destination="@id/navigation_rocket_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favourites"
@@ -22,4 +26,13 @@
         android:name="com.kadirbulut.spacexfan.ui.upcominglaunches.UpcomingLaunchesFragment"
         android:label="@string/title_upcoming_launches"
         tools:layout="@layout/fragment_upcoming_launches" />
+
+    <fragment
+        android:id="@+id/navigation_rocket_detail"
+        android:name="com.kadirbulut.spacexfan.ui.rocketdetail.RocketDetailFragment">
+        <argument
+            android:name="rocketId"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

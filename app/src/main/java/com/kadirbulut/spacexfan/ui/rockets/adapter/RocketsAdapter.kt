@@ -20,6 +20,9 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
                 it.clItemRocket.setBackgroundColor(
                     it.clItemRocket.resources.getColor(getBackgroundColor(position))
                 )
+                it.clItemRocket.setOnClickListener {
+                    onRocketClicked(rocketModelDto.id.toString())
+                }
             }
         }
     }

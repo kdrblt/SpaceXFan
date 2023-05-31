@@ -3,4 +3,17 @@
     <string name="title_rockets">Rockets</string>
     <string name="title_favourites">Favourites</string>
     <string name="title_upcoming_launches">Upcoming Launches</string>
+    <string name="rocket_name_title">Name</string>
+    <string name="rocket_type_title">Type</string>
+    <string name="rocket_country_title">Country</string>
+    <string name="rocket_company_title">Company</string>
+    <string name="rocket_wikipedia_title">Wikipedia</string>
+    <string name="rocket_first_flight_title">First Flight</string>
+    <string name="rocket_height_title">Height</string>
+    <string name="rocket_diameter_title">Diameter</string>
+    <string name="rocket_mass_title">Mass</string>
+    <string name="rocket_description_title">Description</string>
+    <string name="feet">feet</string>
+    <string name="kg">kg</string>
+    <string name="formatted_value_text">%s %s</string>
 </resources>

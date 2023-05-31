@@ -25,6 +25,8 @@
     <dimen name="size_34dp">34dp</dimen>
     <dimen name="size_38dp">38dp</dimen>
     <dimen name="size_40dp">40dp</dimen>
+    <dimen name="size_50dp">50dp</dimen>
+    <dimen name="size_100dp">100dp</dimen>
     <dimen name="size_150dp">150dp</dimen>
     <dimen name="size_200dp">200dp</dimen>
     <dimen name="size_250dp">250dp</dimen>

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class RocketResponseModel(
     @SerializedName("height") var height: Height?,
     @SerializedName("diameter") var diameter: Height?,
-    @SerializedName("mass") var mass: Height,
+    @SerializedName("mass") var mass: Mass?,
     @SerializedName("first_stage") var firstStage: FirstStage?,
     @SerializedName("second_stage") var secondStage: SecondStage?,
     @SerializedName("engines") var engines: Engines?,
@@ -110,5 +110,10 @@ data class RocketResponseModel(
     data class Isp(
         @SerializedName("sea_level") var seaLevel: Int? = null,
         @SerializedName("vacuum") var vacuum: Int? = null
+    )
+
+    data class Mass(
+        @SerializedName("kg") var kg: Double? = null,
+        @SerializedName("lb") var lb: Double? = null
     )
 }

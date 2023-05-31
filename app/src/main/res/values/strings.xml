@@ -21,4 +21,9 @@
     <string name="launch_flight_number_title">Flight Number</string>
     <string name="launch_detail_page_title">Launch Details</string>
     <string name="rocket_detail_page_title">Rocket Details</string>
+    <string name="application_permission_permission_needed">Permission is required!</string>
+    <string name="application_permission_redirect_for_permission">You will direct to settings for permission.</string>
+    <string name="application_permission_allow">Allow</string>
+    <string name="application_permission_cancel">Cancel</string>
+    <string name="permission_granted">Permission is granted</string>
 </resources>

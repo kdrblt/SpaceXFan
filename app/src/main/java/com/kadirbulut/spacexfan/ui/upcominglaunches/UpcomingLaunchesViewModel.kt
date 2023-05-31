@@ -16,17 +16,16 @@ class UpcomingLaunchesViewModel @Inject constructor(
     private val getLaunchesUseCase: GetLaunchesUseCase
 ) : ViewModel() {
 
-    val isLoading = MutableLiveData(true)
     private val _launches = MutableLiveData<CallBack<List<LaunchModelDto>>>(CallBack.OnLoading)
     val launches: LiveData<CallBack<List<LaunchModelDto>>> = _launches
 
     init {
-        isLoading.postValue(true) // start with loading until request is finished
         getLaunches() // send request
     }
 
     private fun getLaunches() {
         viewModelScope.launch {
+            _launches.value = CallBack.OnLoading
             _launches.value = getLaunchesUseCase.invoke()
         }
     }

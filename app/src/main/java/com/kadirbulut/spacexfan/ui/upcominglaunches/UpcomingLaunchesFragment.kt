@@ -36,20 +36,20 @@ class UpcomingLaunchesFragment : BaseFragment<FragmentUpcomingLaunchesBinding>()
                 Observer {
                     when (it) {
                         is CallBack.OnError -> {
-                            isLoading.postValue(false)
+                            binding.progress.visibility = View.GONE
                         }
                         CallBack.OnLoading -> {
-                            isLoading.postValue(true)
+                            binding.progress.visibility = View.VISIBLE
                         }
                         is CallBack.OnSuccess -> {
                             binding.rvUpcomingLaunches.adapter = launchesAdapter
                             binding.rvUpcomingLaunches.layoutManager =
                                 LinearLayoutManager(requireContext())
                             launchesAdapter.setList(it.data)
-                            isLoading.postValue(false)
                             launchesAdapter.onLaunchClicked = {
                                 navigateToDetail(it)
                             }
+                            binding.progress.visibility = View.GONE
                         }
                     }
                 }

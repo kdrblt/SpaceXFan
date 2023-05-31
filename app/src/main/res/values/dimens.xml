@@ -84,6 +84,7 @@
     <dimen name="margin_19dp">19dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
     <dimen name="margin_100dp">100dp</dimen>
 
 

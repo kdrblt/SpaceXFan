@@ -26,4 +26,7 @@
     <string name="application_permission_allow">Allow</string>
     <string name="application_permission_cancel">Cancel</string>
     <string name="permission_granted">Permission is granted</string>
+    <string name="login_title">Login</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Password</string>
 </resources>

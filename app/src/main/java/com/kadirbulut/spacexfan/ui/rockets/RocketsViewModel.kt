@@ -15,17 +15,17 @@ import kotlinx.coroutines.launch
 class RocketsViewModel @Inject constructor(
     private val getRocketsUseCase: GetRocketsUseCase
 ) : ViewModel() {
-    val isLoading = MutableLiveData(true)
+
     private val _rockets = MutableLiveData<CallBack<List<RocketModelDto>>>(CallBack.OnLoading)
     val rockets: LiveData<CallBack<List<RocketModelDto>>> = _rockets
 
     init {
-        isLoading.postValue(true) // start with loading until request is finished
         getRockets() // send request
     }
 
     private fun getRockets() {
         viewModelScope.launch {
+            _rockets.value = CallBack.OnLoading
             _rockets.value = getRocketsUseCase.invoke()
         }
     }

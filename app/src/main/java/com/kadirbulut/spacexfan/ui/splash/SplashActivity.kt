@@ -1,7 +1,9 @@
 package com.kadirbulut.spacexfan.ui.splash
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -12,13 +14,26 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.kadirbulut.spacexfan.MainActivity
 import com.kadirbulut.spacexfan.R
+import com.kadirbulut.spacexfan.common.util.Constants
 import com.kadirbulut.spacexfan.databinding.ActivitySplashBinding
+import com.kadirbulut.spacexfan.domain.usecase.firebase.LogOutUseCase
+import com.kadirbulut.spacexfan.ext.set
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import kotlinx.coroutines.launch
 
+@SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+    @Inject
+    lateinit var logOutUseCase: LogOutUseCase
     private lateinit var binding: ActivitySplashBinding
     private lateinit var layout: View
     private val requestPermissionLauncher =
@@ -37,6 +52,10 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         layout = binding.mainLayout
+        sharedPreferences[Constants.SHARED_PREFS_USER_LOGIN_KEY] = false
+        lifecycleScope.launch {
+            logOutUseCase.invoke()
+        }
         askInternetPermission(binding.tvSplashText)
     }
 

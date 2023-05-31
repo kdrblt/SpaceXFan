@@ -37,19 +37,19 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
                 Observer {
                     when (it) {
                         is CallBack.OnError -> {
-                            isLoading.postValue(false)
+                            binding.progress.visibility = View.GONE
                         }
                         CallBack.OnLoading -> {
-                            isLoading.postValue(true)
+                            binding.progress.visibility = View.VISIBLE
                         }
                         is CallBack.OnSuccess -> {
                             binding.rvRockets.adapter = rocketsAdapter
                             binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
                             rocketsAdapter.setList(it.data)
-                            isLoading.postValue(false)
                             rocketsAdapter.onRocketClicked = {
                                 navigateToDetail(it)
                             }
+                            binding.progress.visibility = View.GONE
                         }
                     }
                 }

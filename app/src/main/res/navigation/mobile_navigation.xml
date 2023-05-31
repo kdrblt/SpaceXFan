@@ -19,7 +19,12 @@
         android:id="@+id/navigation_favourites"
         android:name="com.kadirbulut.spacexfan.ui.favourites.FavouritesFragment"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favourites_to_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_upcoming_launches"
@@ -46,6 +51,14 @@
         <argument
             android:name="launchId"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.kadirbulut.spacexfan.ui.login.LoginFragment">
+        <action
+            android:id="@+id/action_from_login_to_favourites"
+            app:destination="@id/navigation_favourites" />
     </fragment>
 
 

@@ -3,6 +3,7 @@ package com.kadirbulut.spacexfan.ui.favourites
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.kadirbulut.spacexfan.R
 import com.kadirbulut.spacexfan.databinding.FragmentFavouritesBinding
 import com.kadirbulut.spacexfan.ui.base.BaseFragment
@@ -15,9 +16,20 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
+        val isUserLogin = viewModel.checkUserIsLogin()
+        if (isUserLogin)
+            initViews()
+        else
+            navigateToLogin()
     }
+
     override fun initViews() {
-        binding.textDashboard.text = "favouritessss"
+        viewModel.checkUserIsLogin()
+    }
+
+    private fun navigateToLogin() {
+        findNavController().navigate(
+            FavouritesFragmentDirections.actionFavouritesToLogin()
+        )
     }
 }

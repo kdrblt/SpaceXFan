@@ -35,6 +35,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
+    /*
+     * This func. observes login operation
+     * Makes some saving status operations
+     * Goes related page, favourites fragment
+     */
     private fun setObservers() {
         with(viewModel) {
             user.observe(

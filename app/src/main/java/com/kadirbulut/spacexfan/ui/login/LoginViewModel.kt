@@ -23,6 +23,9 @@ class LoginViewModel @Inject constructor(
     private val _user = MutableLiveData<CallBack<FirebaseUser>>()
     val user: LiveData<CallBack<FirebaseUser>> = _user
 
+    /*
+     * If login is clicked, make firebase service call for authentication
+     */
     fun loginClicked(email: String, password: String) {
         viewModelScope.launch {
             _user.postValue(CallBack.OnLoading)
@@ -36,6 +39,10 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    /*
+     * If login is success, save login status and user email
+     * User email is used for firebase store operations
+     */
     fun saveUserLoginSuccess(userEmail: String) {
         sharedPreferences.set(Constants.SHARED_PREFS_USER_LOGIN_KEY, true)
         sharedPreferences.set(Constants.SHARED_PREFS_USER_USER_EMAIL_KEY, userEmail)

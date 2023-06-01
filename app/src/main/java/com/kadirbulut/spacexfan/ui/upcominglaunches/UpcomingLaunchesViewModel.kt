@@ -23,6 +23,9 @@ class UpcomingLaunchesViewModel @Inject constructor(
         getLaunches() // send request
     }
 
+    /*
+     * Get upcoming launches from spacex api
+     */
     private fun getLaunches() {
         viewModelScope.launch {
             _launches.value = CallBack.OnLoading

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -41,9 +40,9 @@ class SplashActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Log.i("Permission: ", "Granted")
+                playAnimation()
             } else {
-                Log.i("Permission: ", "Denied")
+                finish()
             }
         }
 
@@ -56,7 +55,7 @@ class SplashActivity : AppCompatActivity() {
         lifecycleScope.launch {
             logOutUseCase.invoke()
         }
-        askInternetPermission(binding.tvSplashText)
+        askPermission(binding.tvSplashText)
     }
 
     private fun playAnimation() {
@@ -80,18 +79,18 @@ class SplashActivity : AppCompatActivity() {
         binding.tvSplashText.startAnimation(animation)
     }
 
-    fun askInternetPermission(view: View) {
+    private fun askPermission(view: View) {
         when {
             ContextCompat.checkSelfPermission(
                 this,
-                Manifest.permission.INTERNET
+                Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
                 playAnimation()
             }
 
             ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
-                Manifest.permission.INTERNET
+                Manifest.permission.ACCESS_COARSE_LOCATION
             ) -> {
                 layout.showSnackbar(
                     view,
@@ -100,14 +99,14 @@ class SplashActivity : AppCompatActivity() {
                     getString(R.string.application_permission_allow)
                 ) {
                     requestPermissionLauncher.launch(
-                        Manifest.permission.INTERNET
+                        Manifest.permission.ACCESS_COARSE_LOCATION
                     )
                 }
             }
 
             else -> {
                 requestPermissionLauncher.launch(
-                    Manifest.permission.INTERNET
+                    Manifest.permission.ACCESS_COARSE_LOCATION
                 )
             }
         }

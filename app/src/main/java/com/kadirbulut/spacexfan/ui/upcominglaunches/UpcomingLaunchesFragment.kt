@@ -28,6 +28,9 @@ class UpcomingLaunchesFragment : BaseFragment<FragmentUpcomingLaunchesBinding>()
     override fun initViews() {
     }
 
+    /*
+     * Observe view model data and show upcoming launches
+     */
     private fun initObservers() {
         with(viewModel) {
             // top categories

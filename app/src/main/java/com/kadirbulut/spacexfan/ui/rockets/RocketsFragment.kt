@@ -31,6 +31,9 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
     }
 
     private fun initObservers() {
+        /*
+         * Observe and init rocket list adapter
+         */
         with(viewModel) {
             // top categories
             rockets.observe(
@@ -53,6 +56,10 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
         }
     }
 
+    /*
+     * Set rockets adapter
+     * Listen for rocket clicked, if user is login add-remove favourite operations
+     */
     private fun setRocketsAdapter(data: List<RocketModelDto>) {
         binding.rvRockets.adapter = rocketsAdapter
         binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
@@ -60,8 +67,8 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
             data,
             viewModel.checkUserIsLogin()
         )
-        rocketsAdapter.onRocketClicked = {
-            navigateToDetail(it)
+        rocketsAdapter.onRocketClicked = { rocketId: String, isFavourite: Boolean ->
+            navigateToDetail(rocketId, isFavourite)
         }
         rocketsAdapter.addFavouriteClicked = {
             viewModel.addFavourites(it)
@@ -70,10 +77,16 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
             viewModel.removeFavourites(it)
         }
     }
-    private fun navigateToDetail(id: String) {
+
+    /*
+     * Navigate to detail page with rocket id
+     */
+    private fun navigateToDetail(id: String, isFavourite: Boolean) {
         findNavController().navigate(
             RocketsFragmentDirections.actionFromRocketsToRocketDetail(
-                id
+                id,
+                isFavourite,
+                true
             )
         )
     }

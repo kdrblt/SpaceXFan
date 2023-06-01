@@ -1,6 +1,8 @@
 package com.kadirbulut.spacexfan.common.util
 
-// sealed class for service response results
+/*
+ * Sealed class for service response results
+ */
 sealed class CallBack<out T : Any> {
     data class OnSuccess<out T : Any>(val data: T) : CallBack<T>()
     data class OnError<out T : Any>(val error: Throwable) : CallBack<T>()

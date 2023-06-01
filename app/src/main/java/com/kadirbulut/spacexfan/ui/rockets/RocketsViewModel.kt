@@ -55,6 +55,9 @@ class RocketsViewModel @Inject constructor(
         false
     )
 
+    /*
+     * Get favourite rockets if user is login to show fav icons and make fav operations
+     */
     private fun getFavouriteList(rocketListCallResult: CallBack<List<RocketModelDto>>) {
         val email = sharedPreferences.get(
             Constants.SHARED_PREFS_USER_USER_EMAIL_KEY,
@@ -86,6 +89,10 @@ class RocketsViewModel @Inject constructor(
         }
     }
 
+    /*
+     * If user is login, get favourite list from firebase
+     * Update fav icons
+     */
     private fun setRocketsWithFavouriteAttribute(
         rocketListCallResult: CallBack<List<RocketModelDto>>
     ) {
@@ -107,14 +114,19 @@ class RocketsViewModel @Inject constructor(
         }
     }
 
-    private fun getFavouriteListFromTaskResult(data: MutableMap<String, Any>?) =
-        data?.values?.toString()
-            ?.trim()
-            ?.replace("[", "")
-            ?.replace("]", "")
-            ?.replace(" ", "")
-            ?.split(",")
+    private fun getFavouriteListFromTaskResult(data: MutableMap<String, Any>?): List<String>? {
+        val res = data?.get(Constants.DB_ROCKETS_FIELD_NAME).toString()
+        val str = res
+            .trim()
+            .replace("[", "")
+            .replace("]", "")
+            .replace(" ", "")
+        return if (str.isEmpty()) listOf() else str.split(",")
+    }
 
+    /*
+     * Add rocket into favourites
+     */
     fun addFavourites(rocketId: String) {
         viewModelScope.launch {
             addFavouriteUseCase.invoke(
@@ -126,6 +138,9 @@ class RocketsViewModel @Inject constructor(
         }
     }
 
+    /*
+     * Remove rocket from favourites
+     */
     fun removeFavourites(rocketId: String) {
         viewModelScope.launch {
             removeFavouriteUseCase.invoke(

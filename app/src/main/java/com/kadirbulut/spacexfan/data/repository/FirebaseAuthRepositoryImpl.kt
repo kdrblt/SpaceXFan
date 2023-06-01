@@ -6,6 +6,9 @@ import com.kadirbulut.spacexfan.domain.repository.FirebaseAuthRepository
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
+/*
+ * Firebase authentication repository
+ */
 class FirebaseAuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : FirebaseAuthRepository {

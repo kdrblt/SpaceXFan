@@ -6,6 +6,9 @@ import com.kadirbulut.spacexfan.common.util.Constants
 import com.kadirbulut.spacexfan.domain.repository.FirebaseFireStoreRepository
 import javax.inject.Inject
 
+/*
+ * Firebase store data repository
+ */
 class FirebaseFireStoreRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : FirebaseFireStoreRepository {
@@ -20,13 +23,6 @@ class FirebaseFireStoreRepositoryImpl @Inject constructor(
             .addOnFailureListener {
                 return@addOnFailureListener
             }
-            /*.result.data?.values?.toString()
-            ?.trim()
-            ?.replace("[","")
-            ?.replace("]","")
-            ?.replace(" ","")
-            ?.split(",")*/
-
     override suspend fun addFavouriteRocket(userEmail: String, rocketId: String) =
         firestore
             .collection(Constants.DB_FAVOURITES_TABLE_NAME)

@@ -3,6 +3,10 @@ package com.kadirbulut.spacexfan.domain.mapper
 import com.kadirbulut.spacexfan.data.model.response.LaunchResponseModel
 import com.kadirbulut.spacexfan.domain.dto.LaunchModelDto
 
+/*
+ * This data transfer object class was created to use just enough data.
+ * Not all respones datas
+ */
 fun LaunchResponseModel.toDomainModel() = LaunchModelDto(
     id = id,
     name = name,

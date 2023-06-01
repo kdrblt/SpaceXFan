@@ -6,19 +6,27 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface SpaceXServices {
-    // get rockets' list
+    /*
+     *get rockets' list
+     */
     @GET(ROCKETS)
     suspend fun getRockets(): List<RocketResponseModel>
 
-    // get specific rocket with id
+    /*
+     *get specific rocket with id
+     */
     @GET(ROCKET)
     suspend fun getRocketWithId(@Path(value = "id") rocketId: String): RocketResponseModel
 
-    // get launches' list
+    /*
+     *get launches' list
+     */
     @GET(LAUNCHES)
     suspend fun getLaunches(): List<LaunchResponseModel>
 
-    // get specific launch with id
+    /*
+     *get specific launch with id
+     */
     @GET(LAUNCH)
     suspend fun getLaunchWithId(@Path(value = "id") launchId: String): LaunchResponseModel
 

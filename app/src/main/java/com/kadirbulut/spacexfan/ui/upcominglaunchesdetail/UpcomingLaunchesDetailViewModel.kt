@@ -40,6 +40,9 @@ class UpcomingLaunchesDetailViewModel @Inject constructor(
         }
     }
 
+    /*
+     * Get detailed launch infos from spacex api
+     */
     private fun getLaunchDetail() {
         viewModelScope.launch {
             _launchDetail.postValue(
@@ -52,6 +55,9 @@ class UpcomingLaunchesDetailViewModel @Inject constructor(
         }
     }
 
+    /*
+     * Create detailed infos list to show user
+     */
     fun getDetailItems(data: LaunchModelDto) {
         _launchDetailItems.postValue(
             arrayListOf(

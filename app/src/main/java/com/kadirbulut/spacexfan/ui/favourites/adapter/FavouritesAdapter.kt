@@ -1,4 +1,4 @@
-package com.kadirbulut.spacexfan.ui.rockets.adapter
+package com.kadirbulut.spacexfan.ui.favourites.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,32 +8,47 @@ import com.kadirbulut.spacexfan.R
 import com.kadirbulut.spacexfan.databinding.ItemRocketBinding
 import com.kadirbulut.spacexfan.domain.dto.RocketModelDto
 
-class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
+class FavouritesAdapter : RecyclerView.Adapter<FavouritesAdapter.ViewHolder>() {
+
     private var dataSet = arrayListOf<RocketModelDto>()
-    private var isLogin = false
-    var onRocketClicked: (String, Boolean) -> Unit = { itemId: String, isFavourite: Boolean -> }
-    var addFavouriteClicked: (String) -> Unit = {}
+    var onRocketClicked: (String, Boolean) -> Unit = { rocketId: String, isFavourite: Boolean -> }
     var removeFavouriteClicked: (String) -> Unit = {}
+    var allItemsRemoved: () -> Unit = {}
 
     inner class ViewHolder(private var binding: ItemRocketBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(rocketModelDto: RocketModelDto, position: Int) {
             binding.let {
                 it.rocket = rocketModelDto
-                it.showFavIcon = isLogin
+                it.showFavIcon = true
                 it.clItemRocket.setBackgroundColor(
                     it.clItemRocket.resources.getColor(getBackgroundColor(position))
                 )
+                /*
+                 * if user click item, observe activity to go detail page
+                 */
                 it.clItemRocket.setOnClickListener {
                     onRocketClicked(rocketModelDto.id.toString(), binding.favButton.isChecked)
                 }
-                it.favButton.isChecked = rocketModelDto.isFavourite
+                it.favButton.isChecked = true
+                /*
+                 * Toggle listener for fav button
+                 */
                 it.favButton.setOnClickListener {
                     val on = (it as ToggleButton).isChecked
-                    if (on) {
-                        addFavouriteClicked(rocketModelDto.id.toString())
-                    } else {
+                    if (!on) {
+                        /*
+                         * remove from favourites and notify list
+                         */
                         removeFavouriteClicked(rocketModelDto.id.toString())
+                        notifyItemRemoved(position)
+                        dataSet.remove(rocketModelDto)
+                        /*
+                         * if all favourites are removed, notify fragment to show empty design
+                         */
+                        if (position == 0) {
+                            allItemsRemoved()
+                        }
                     }
                 }
             }
@@ -61,8 +76,7 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
     }
 
     // set dataset
-    fun setList(data: List<RocketModelDto>, isLogin: Boolean) {
-        this.isLogin = isLogin
+    fun setList(data: List<RocketModelDto>) {
         dataSet.clear()
         dataSet.addAll(data)
         notifyItemRangeInserted(0, data.size)

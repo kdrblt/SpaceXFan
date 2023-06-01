@@ -10,6 +10,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kadirbulut.spacexfan.R
 
+/*
+ * Data binding adapter load image from url in xml
+ */
 @BindingAdapter("imageUrl")
 fun loadImage(
     view: View,
@@ -25,6 +28,9 @@ fun loadImage(
         .into(image)
 }
 
+/*
+ * For show progress drawable while image is loading
+ */
 fun placeholderProgressBar(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
         strokeWidth = 8f

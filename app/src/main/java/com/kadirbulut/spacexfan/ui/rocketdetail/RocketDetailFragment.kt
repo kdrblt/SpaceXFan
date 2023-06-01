@@ -39,13 +39,33 @@ class RocketDetailFragment : BaseFragment<FragmentRocketDetailBinding>() {
     }
 
     private fun setClickListeners() {
+        /*
+         * If user coming from rockets fragment , navigate user it again
+         * If user coming from favourites fragment , navigate user it again
+         */
         binding.toolbar.setNavigationOnClickListener {
-            findNavController().popBackStack()
+            if (viewModel.isFromRocketsFragment.value == true)
+                findNavController().navigate(
+                    R.id.navigation_rockets
+                )
+            else
+                findNavController().navigate(
+                    R.id.navigation_favourites
+                )
+        }
+
+        binding.favButton.setOnClickListener {
+            viewModel.changeFavority(
+                binding.favButton.isChecked
+            )
         }
     }
 
     private fun setObservers() {
         with(viewModel) {
+            /*
+             * Observe and init slider adapter with rocket images
+             */
             rocketDetail.observe(
                 viewLifecycleOwner,
                 Observer {
@@ -64,6 +84,9 @@ class RocketDetailFragment : BaseFragment<FragmentRocketDetailBinding>() {
                 }
             )
 
+            /*
+             * Observe and show detailed rocket infos
+             */
             rocketDetailItems.observe(
                 viewLifecycleOwner,
                 Observer {
@@ -71,6 +94,16 @@ class RocketDetailFragment : BaseFragment<FragmentRocketDetailBinding>() {
                     binding.rvRocketDetailItems.layoutManager =
                         LinearLayoutManager(requireContext())
                     rocketDetailsAdapter.setList(it)
+                }
+            )
+
+            isUserLogin.observe(
+                viewLifecycleOwner,
+                Observer {
+                    if (it) {
+                        binding.favButton.visibility = View.VISIBLE
+                        binding.favButton.isChecked = viewModel.isFavouriteRocket.value!!
+                    }
                 }
             )
         }

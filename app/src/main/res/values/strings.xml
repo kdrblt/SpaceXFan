@@ -29,4 +29,5 @@
     <string name="login_title">Login</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_password">Password</string>
+    <string name="favourites_empty_message">You do not have a favorite rocket.</string>
 </resources>

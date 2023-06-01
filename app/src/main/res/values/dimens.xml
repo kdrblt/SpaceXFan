@@ -107,6 +107,7 @@
     <dimen name="padding_18dp">18dp</dimen>
     <dimen name="padding_20dp">20dp</dimen>
     <dimen name="padding_24dp">24dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
 
     <!-- Letter Spacing -->
     <dimen name="letter_spacing_body">0.0192</dimen>

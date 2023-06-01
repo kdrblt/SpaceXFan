@@ -8,7 +8,9 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-// for data binding binder ; converts api date format to item format
+/*
+ *For data binding binder ; converts api date format to item format
+ */
 @BindingAdapter("formatDate")
 fun setFormattedDateText(view: View, date: String?) {
     var outputDate: String? = null

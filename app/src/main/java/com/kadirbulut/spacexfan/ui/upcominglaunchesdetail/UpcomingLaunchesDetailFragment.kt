@@ -39,6 +39,9 @@ class UpcomingLaunchesDetailFragment : BaseFragment<FragmentUpcomingLaunchesDeta
         }
     }
 
+    /*
+     * Observe and init recyclerview. Show upcoming launches detailed infos
+     */
     private fun setObservers() {
         with(viewModel) {
             launchDetail.observe(

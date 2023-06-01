@@ -20,9 +20,15 @@
         android:name="com.kadirbulut.spacexfan.ui.favourites.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" >
+
         <action
             android:id="@+id/action_favourites_to_login"
             app:destination="@id/navigation_login" />
+
+        <action
+            android:id="@+id/action_favourites_to_rocketDetail"
+            app:destination="@id/navigation_rocket_detail" />
+
     </fragment>
 
 
@@ -43,6 +49,14 @@
         <argument
             android:name="rocketId"
             app:argType="string" />
+        <argument
+            android:name="isFavourite"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="fromRocketsFragment"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
     <fragment
@@ -60,6 +74,5 @@
             android:id="@+id/action_from_login_to_favourites"
             app:destination="@id/navigation_favourites" />
     </fragment>
-
 
 </navigation>

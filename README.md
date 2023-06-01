@@ -1,5 +1,12 @@
-# SpaceXFan
+# SpaceXFan Steps
 - Project is created
 - Project skeleton is created
+- Base classes are added
 - Spacex service ,repository, datasource, use case, response model classes are added
 - Di modules are added
+- Fragments are designed and connected with apis.
+- Firebase authentication is connected
+- Firebase store is connected to keep favourites
+- Favourite operations ; add, remove, updates are fixed with api
+- Run time permission is fixed
+- Firebase crashlytics is added.

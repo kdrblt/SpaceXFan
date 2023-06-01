@@ -1,4 +1,4 @@
-# PS
+# **PS**
 - Uygulama genelinde case pdf'inde belirtilen ve görülmek istenen kriterlere dikkat edildi. 
 - Uygulamaya login için firebase authentication kullanıldı
 - Favorileri tutmak için firebase store'da kullanıcı email'i ile uygun bir tablo oluşturuldu ve kullanıldı. 

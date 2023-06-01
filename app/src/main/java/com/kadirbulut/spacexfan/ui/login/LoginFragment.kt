@@ -50,7 +50,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                         }
                         is CallBack.OnSuccess -> {
                             binding.progress.visibility = View.GONE
-                            viewModel.saveUserLoginSuccess()
+                            viewModel.saveUserLoginSuccess(binding.etLoginEmail.text.toString())
                             navigateToFavourites()
                         }
                     }

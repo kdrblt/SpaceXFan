@@ -29,7 +29,7 @@ fun placeholderProgressBar(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
         strokeWidth = 8f
         centerRadius = 40f
-        setColorSchemeColors(ContextCompat.getColor(context, R.color.light_gray))
+        setColorSchemeColors(ContextCompat.getColor(context, R.color.orange))
         start()
     }
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kadirbulut.spacexfan.R
 import com.kadirbulut.spacexfan.common.util.CallBack
 import com.kadirbulut.spacexfan.databinding.FragmentRocketsBinding
+import com.kadirbulut.spacexfan.domain.dto.RocketModelDto
 import com.kadirbulut.spacexfan.ui.base.BaseFragment
 import com.kadirbulut.spacexfan.ui.rockets.adapter.RocketsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,17 +44,30 @@ class RocketsFragment : BaseFragment<FragmentRocketsBinding>() {
                             binding.progress.visibility = View.VISIBLE
                         }
                         is CallBack.OnSuccess -> {
-                            binding.rvRockets.adapter = rocketsAdapter
-                            binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
-                            rocketsAdapter.setList(it.data)
-                            rocketsAdapter.onRocketClicked = {
-                                navigateToDetail(it)
-                            }
+                            setRocketsAdapter(it.data)
                             binding.progress.visibility = View.GONE
                         }
                     }
                 }
             )
+        }
+    }
+
+    private fun setRocketsAdapter(data: List<RocketModelDto>) {
+        binding.rvRockets.adapter = rocketsAdapter
+        binding.rvRockets.layoutManager = LinearLayoutManager(requireContext())
+        rocketsAdapter.setList(
+            data,
+            viewModel.checkUserIsLogin()
+        )
+        rocketsAdapter.onRocketClicked = {
+            navigateToDetail(it)
+        }
+        rocketsAdapter.addFavouriteClicked = {
+            viewModel.addFavourites(it)
+        }
+        rocketsAdapter.removeFavouriteClicked = {
+            viewModel.removeFavourites(it)
         }
     }
     private fun navigateToDetail(id: String) {

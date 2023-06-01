@@ -36,7 +36,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun saveUserLoginSuccess() {
+    fun saveUserLoginSuccess(userEmail: String) {
         sharedPreferences.set(Constants.SHARED_PREFS_USER_LOGIN_KEY, true)
+        sharedPreferences.set(Constants.SHARED_PREFS_USER_USER_EMAIL_KEY, userEmail)
     }
 }

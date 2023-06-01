@@ -17,7 +17,8 @@ data class RocketModelDto(
     val description: String?,
     val height: Height?,
     val diameter: Height?,
-    val mass: Mass?
+    val mass: Mass?,
+    var isFavourite: Boolean = false
 ) : Parcelable {
 
     @Parcelize

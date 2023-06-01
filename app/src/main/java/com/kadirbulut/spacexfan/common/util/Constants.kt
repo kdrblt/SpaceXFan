@@ -6,4 +6,7 @@ object Constants {
     const val UPCOMING_LAUNCHES_DATE_FORMAT = "HH:mm dd/MM/yyyy"
     const val SPACEX_SHARED_PREF_KEY = "SPACEX_SHARED_PREF_KEY"
     const val SHARED_PREFS_USER_LOGIN_KEY = "isUserLogin"
+    const val SHARED_PREFS_USER_USER_EMAIL_KEY = "userEmail"
+    const val DB_FAVOURITES_TABLE_NAME = "Favourites"
+    const val DB_ROCKETS_FIELD_NAME = "rockets"
 }

@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="rocket"
             type="com.kadirbulut.spacexfan.domain.dto.RocketModelDto" />
+        <variable
+            name="showFavIcon"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,11 +48,12 @@
 
                 <ToggleButton
                     android:id="@+id/favButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/size_32dp"
+                    android:layout_height="@dimen/size_32dp"
                     android:textOn=""
                     android:textOff=""
-                    android:visibility="gone"
+                    android:padding="@dimen/padding_16dp"
+                    android:visibility="@{showFavIcon ? View.VISIBLE : View.GONE}"
                     android:checked="false"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

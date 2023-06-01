@@ -21,6 +21,24 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        binding.navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_rockets -> {
+                    navController.navigate(R.id.navigation_rockets)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.navigation_favourites -> {
+                    navController.navigate(R.id.navigation_favourites)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.navigation_upcoming_launches -> {
+                    navController.navigate(R.id.navigation_upcoming_launches)
+                    return@setOnItemSelectedListener true
+                }
+
+                else -> return@setOnItemSelectedListener true
+            }
+        }
     }
 
     override fun onBackPressed() {

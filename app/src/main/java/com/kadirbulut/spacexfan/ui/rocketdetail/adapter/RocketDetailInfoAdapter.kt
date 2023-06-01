@@ -11,7 +11,7 @@ class RocketDetailInfoAdapter : RecyclerView.Adapter<RocketDetailInfoAdapter.Vie
 
     inner class ViewHolder(private var binding: ItemRocketDetailBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(rocketDetailItem: RocketDetailItem, position: Int) {
+        fun bind(rocketDetailItem: RocketDetailItem) {
             binding.let {
                 it.item = rocketDetailItem
             }
@@ -30,7 +30,7 @@ class RocketDetailInfoAdapter : RecyclerView.Adapter<RocketDetailInfoAdapter.Vie
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(dataSet[position], position)
+        viewHolder.bind(dataSet[position])
     }
 
     // Return the size of your (invoked by the layout manager)

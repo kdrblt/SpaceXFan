@@ -12,7 +12,7 @@ class UpcomingLaunchDetailInfoAdapter :
 
     inner class ViewHolder(private var binding: ItemLaunchDetailBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(launchDetailItem: LaunchDetailItem, position: Int) {
+        fun bind(launchDetailItem: LaunchDetailItem) {
             binding.let {
                 it.item = launchDetailItem
             }
@@ -31,7 +31,7 @@ class UpcomingLaunchDetailInfoAdapter :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(dataSet[position], position)
+        viewHolder.bind(dataSet[position])
     }
 
     // Return the size of your (invoked by the layout manager)

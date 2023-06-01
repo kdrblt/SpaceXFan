@@ -3,8 +3,9 @@
 - Uygulamaya login için firebase authentication kullanıldı
 - Favorileri tutmak için firebase store'da kullanıcı email'i ile uygun bir tablo oluşturuldu ve kullanıldı. 
 - Giriş ve favoriler kısmı tamamen firebase server tarafında.
-- Run time permission görülmek istenmiş. Ancak uygulamada internet haricinde bir izin kullanılmadığı için, görebilmeniz açısından location izni aldım girişte.
+- Run time permission görülmek istenmiş. Ancak uygulamada internet haricinde bir izin kullanılmadığı için, işeyişi görebilmeniz açısından location izni aldım splash screende.
 - SpaceX api upcoming launches kısmında, api'den bilgilerin çoğuna yakını null gelmekte. Dolayısıyla launches list ve detay sayfalarında çok fazla bilgi gösteremedim.Gelenleri göstermeye çalıştım. Yinede tüm classlarını,adapterlarını vs yazmaya çalıştım.
+- Elimden geldiğince kısıtlı zamanımda yetiştirmeye çalıştım. Bir hatam var ise affola. Keyifli okumalar dilerim :)
 
 # Dummy USERS and PASSWORDS
 - user1@gmail.com password : 123456

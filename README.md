@@ -35,6 +35,7 @@
 - MVVM , Clean Arch.
 - Courutines , LiveData
 - Databinding , Viewbinding
+- Glide
 - Firebase Auth , Firebase Store, Firebase Crashlytics
 - Ktlint
 - Proguard
